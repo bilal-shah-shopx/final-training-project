@@ -7,32 +7,36 @@
     --bg-color: #FFFDF7;
     --btn-left: #AF2081;
     --btn-right: #533174;
-    --hr-color: #C7C8C9;
     --heading: #333333;
-    --hightlight: #D75D33;
+    --highlight: #D75D33;
     --dark: #000000;
+}
+
+*{
+    box-sizing: border-box;
 }
 
 body {
     font-family: roboto;
 }
 
-.container-fluid {
+/*Navbar */
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+    padding: 0 0.8rem;
+}
+
+li.breadcrumb-item{
+    font-size: 14px;
+}
+
+/* Plans Section*/
+.plans-section, .day-section {
     background-color: var(--bg-color);
 }
 
-a.disabled{
-    color: var(--disabled);
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-a.non-active{
-     color: var(--disabled);
-}
-
-.hr {
-    color: var(--hr-color);
+.plans-section h2.heading{
+    font-size: 36px;
 }
 
 .plans-section .logo {
@@ -42,10 +46,11 @@ a.non-active{
     min-height: 80px;
 }
 
-.plans-section .btn, .day-section .btn {
+.plans-section .btn, .day-section #next-btn {
     background-image: linear-gradient(to right, var(--btn-left), var(--btn-right));
-    font-size: 14px;
+    font-size: 16px;
     width: 100%;
+        transition: width 0.5s ease;
 }
 
 .plans-section .btn, .plans-section .plan-price, .plans-section .per-week, .plans-section .per-meal {
@@ -60,33 +65,25 @@ a.non-active{
     color: var(--heading);
 }
 
-.plans-section h4.heading {
-    font-size: 30px;
-}
-
 .plans-section p.heading {
     font-size: 16px;
 }
 
-.list-item {
-    font-size: 12px;
-}
-
-.plans-section .meals, .plans-section .shipping {
-    font-size: 14px;
+.plans-section .meals {
+    font-size: 20px;
 }
 
 .plans-section .per-week {
-    font-size: 9px;
+    font-size: 14px;
 }
 
 .plans-section .plan-price, .plans-section .per-meal, .plans-section .meals-img span {
-    font-size: 10px;
+    font-size: 16px;
 
 }
 
 .plans-section .price {
-    color: var(--hightlight);
+    color: var(--highlight);
     font-weight: 600;
 }
 
@@ -94,36 +91,72 @@ a.non-active{
     position: absolute;
     top: 7px;
     left: 7px;
+    font-size: 12px;
+    z-index: 2;
 }
 
 .plans-section .meals-img {
     position: relative;
     overflow: hidden;
+    border-radius: 16px;
 }
 
 .plans-section .meals-img img {
-    transition: transform 0.4s ease;
+    transition: transform 0.3s ease;
 }
 
 .plans-section .meals-img:hover img {
-    border-radius: 38px;
     transform: scale(1.1);
 }
 
-.plans-section .selected-plan {
+.plans-section .plan{
     cursor: pointer;
-    border-radius: 16px;
+}
+
+.plans-section .selected-plan {
+    border-radius: 19px;
     border: 2px solid #3167FF;
 }
 
-.day-section .footer-text{
-    font-size: 12px;
+.plans-section .shipping{
+    font-size: 14px;
 }
 
-.day-section .popular-text{
-    color: var(--hightlight);
-    font-size: 9px;
-    font-weight: 300;
+/* Day Section*/
+.day-section h2.heading, .day-section h1{
+    font-size: 48px;
+}
+
+.day-section .table-container{
+    height: 278px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.day-section .scroll{
+    width: 15px;
+    background-color: #F9F9F9;
+}
+
+.day-section .selected-day{
+    border-left: 8px solid var(--highlight);
+}
+
+body, td, tfoot, th, thead, tr {
+    border-color: black;
+    border-right: 0;
+}
+
+.day-section tr{
+    cursor: pointer;
+}
+
+.day-section tr:hover{
+    transform: translateX(5px);
+}
+
+.day-section .date{
+    font-size: 14px;
 }
 
 .day-section .popular{
@@ -133,17 +166,61 @@ a.non-active{
 .day-section .popular-text::before {
     content: "☆";
     position: absolute;
-    right: 80px;
+    right: 90px;
 }
 
-.day-section .selected-day{
-    border-left: 8px solid var(--hightlight);
+.day-section .popular-text{
+    color: var(--highlight);
+    font-size: 12px;
 }
 
-.day-section tr{
-    cursor: pointer;
+.day-section .btn{
+    font-size: 16px;
 }
 
-.day-section .table{
-   height: 5px;
+.day-section .footer-text{
+    font-size: 12px;
+}
+
+/* Accordion */
+
+.accordion-button {
+    background-color: var(--bg-color);
+    outline: none;
+}
+
+.accordion-button {
+    padding: 30px 0;
+}
+
+.accordion-button:focus{
+    border: none;
+    box-shadow: none;
+}
+
+.accordion-button::after{
+    background-image: url(../images/arrow_forward.svg);
+    transform: rotate(90deg);
+}
+
+.accordion-button:not(.collapsed){
+    color: var(--highlight);
+    box-shadow: none;
+    background-color: var(--bg-color);
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url(../images/arrow_forward.svg);
+    transform: rotate(-90deg);
+}
+
+.accordion-body{
+    background-color: var(--bg-color);
+}
+
+.accordion-item{
+    border: none;
+}
+.accordion-header{
+    border-bottom: 1px solid #ccc;
 }

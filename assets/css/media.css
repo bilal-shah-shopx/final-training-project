@@ -1,37 +1,43 @@
 @media screen and (min-width: 577px) {
-    .plans-section .logo {
-        width: 100%;
-        max-width: 60px;
-        height: auto;
-        min-height: 60px;
+    .plans-section .btn {
+        width: 24%;
     }
 
-    .plans-section .footer {
-        width: auto;
-    }
-
-    .plans-section .shipping,
-    .plans-section p.heading {
-        font-size: 10px;
-    }
-
-    .plans-section h4.heading {
-        font-size: 25px;
-    }
-
-    .plans-section .footer:hover {
-        width: 25%;
+    .plans-section .plan {
+        width: 280px;
     }
 }
 
 @media screen and (min-width: 768px) {
-    .plans-section .meals-img span {
-        left: 28px;
+    .plans-section .plan {
+        width: 250px;
     }
 }
 
 @media screen and (min-width: 992px) {
-    .plans-section .meals-img span {
-        left: 7px;
+    .plans-section .meals {
+        font-size: 24px;
+    }
+
+    .plans-section .btn {
+        width: 15%;
+    }
+
+    .plans-section .plan {
+        width: 210px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .plans-section .btn {
+        width: 11%;
+    }
+
+    .plans-section .btn:hover {
+        width: 28%;   
+    }
+
+    .plans-section .plan {
+        width: 254px;
     }
 }
