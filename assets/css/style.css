@@ -32,7 +32,7 @@ li.breadcrumb-item {
 
 /* Plans Section*/
 .plans-section,
-.day-section {
+.day-section, .checkout-section {
     background-color: var(--bg-color);
 }
 
@@ -246,8 +246,8 @@ tr {
 }
 
 .meals-section .add-btn,
-.meals-section #cart-next-btn,
-.meals-section #cart-next-btn-sm
+.meals-section .cart-next-btn,
+#checkout-btn
  {
     background-image: linear-gradient(to right, var(--btn-left), var(--btn-right));
     font-size: 16px;
@@ -263,16 +263,16 @@ tr {
     color: #707070;
 }
 
-.meals-section .featured {
+.meals-section .featured, .checkout-section .featured {
     background-color: #000000;
     color: #ffffff;
 }
 
-.meals-section .card-img-top {
+.meals-section .card-img-top, .checkout-section .card-img-top {
     position: relative;
 }
 
-.meals-section .extra-price {
+.meals-section .extra-price, .checkout-section .extra-price {
     font-size: 12px;
     position: absolute;
     bottom: 0;
@@ -312,15 +312,14 @@ tr {
     background-color: #ccc;
 }
 
-#clear {
+.clear {
     cursor: pointer;
 }
 
-.custom-card #delivery-day,
+.custom-card .delivery-day,
 .custom-card #tax-msg,
-.custom-card #clear,
-.custom-card #meal-left,
-.custom-card #meal-left-sm,
+.custom-card .clear,
+.custom-card .meal-left,
 .custom-card .extra-price {
     font-size: 12px;
 }
@@ -331,10 +330,8 @@ tr {
 }
 
 .custom-card .add-btn,
-.custom-card #cart-next-btn,
-.custom-card #cart-next-btn-sm,
-#cart-count,
-#cart-count-sm,
+.custom-card .cart-next-btn,
+.cart-count,
 .sub-total {
     font-size: 16px;
 }
@@ -355,4 +352,9 @@ tr {
 
 #cart-down{
     transform: rotate(90deg);
+}
+
+/*Checkout Section */
+.checkout-section .desc{
+    font-size: 13px;
 }

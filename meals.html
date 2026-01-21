@@ -28,27 +28,27 @@
                     <div class="row pt-1" id="meals"></div>
                     <div class="row position-relative">
                         <div class="d-flex d-md-none flex-column position-fixed bottom-0 bg-white">
-                            <div id="cart-mobile" class="col-12 d-flex flex-column border-0 col-12 pt-2 d-none">
+                            <div id="cart-content" class="col-12 d-flex flex-column border-0 col-12 pt-2 d-none">
                                 <div class="d-flex justify-content-center my-3">
                                     <img id="cart-down" class="img-fluid" src="assets/images/arrow_forward.svg" alt="arrow">
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between border-bottom py-2 px-1">
-                                    <p id="delivery-day" class="my-auto"></p>
-                                    <p id="clear" class="my-auto text-decoration-underline text-primary" href="#">
+                                    <p class="delivery-day my-auto"></p>
+                                    <p class="clear my-auto text-decoration-underline text-primary" href="#">
                                         Clear all</p>
                                 </div>
                                 <div class="cart-body">
-                                    <div id="cart-body">
-                                        <div id="cart-items" class="d-flex flex-column gap-1"></div>
+                                    <div class="cart-body-content">
+                                        <div class="cart-items d-flex flex-column gap-1"></div>
                                         <div id="cart-summary" class="d-flex flex-column gap-2 px-2 pt-4 summary">
                                             <strong>Order Summary</strong>
                                             <div class="d-flex flex-row justify-content-between w-100">
-                                                <p class="m-0" id="cart-meals-count"></p>
-                                                <p id="cart-meals-price" class="m-0"></p>
+                                                <p class="m-0 cart-meals-count"></p>
+                                                <p class="cart-meals-price m-0"></p>
                                             </div>
                                             <div class="d-flex flex-row justify-content-between w-100">
                                                 <p class="m-0">Subtotal</p>
-                                                <p id="cart-sub-total" class="m-0 fw-bold"></p>
+                                                <p class="cart-sub-total m-0 fw-bold"></p>
                                             </div>
                                             <p id="tax-msg" class="text-center">Tax and shipping calculated at
                                                 checkout</p>
@@ -60,15 +60,15 @@
                                 <div class="d-flex flex-column gap-3">
                                     <div class="d-flex justify-content-between w-100 px-2">
                                         <div class="sub-total">Subtotal <span class="text-highlight fw-bold">$<span
-                                                    id="sub-total-sm"></span></span>
+                                                    class="sub-total-text"></span></span>
                                         </div>
                                         <div id="cart-up" class="d-flex gap-1 border rounded-pill px-3">
                                             <img src="assets/images/cart-icon.svg" alt="cart-icon">
-                                            <span id="cart-count-sm" class="text-highlight fw-bold">0</span>
+                                            <span class="cart-count text-highlight fw-bold">0</span>
                                         </div>
                                     </div>
-                                    <button id="cart-next-btn-sm" class="text-white w-100 py-2">Next</button>
-                                    <p id="meal-left-sm" class="text-highlight"></p>
+                                    <button class="cart-next-btn text-white w-100 py-2"><a href="checkout.html" class="text-white text-decoration-none">Next</a></button>
+                                    <p class="meal-left text-highlight"></p>
                                 </div>
                             </div>
                         </div>
@@ -78,21 +78,21 @@
                     class="d-none d-md-flex col-md-4 col-lg-3 px-2 position-fixed shadow-dark shadow border border-top-0 custom-card">
                     <div class="d-flex flex-column h-100 col-12">
                         <div class="d-flex align-items-center justify-content-between border-bottom py-2 px-1">
-                            <p id="delivery-day" class="my-auto"></p>
-                            <p id="clear" class="my-auto text-decoration-underline text-primary" href="#">Clear all</p>
+                            <p class="delivery-day my-auto"></p>
+                            <p class="clear my-auto text-decoration-underline text-primary" href="#">Clear all</p>
                         </div>
                         <div class="cart-body">
-                            <div id="cart-body">
-                                <div id="cart-items" class="d-flex flex-column gap-1"></div>
+                            <div class="cart-body-content">
+                                <div class="cart-items d-flex flex-column gap-1"></div>
                                 <div id="cart-summary" class="d-flex flex-column gap-2 px-2 pt-4 summary">
                                     <strong>Order Summary</strong>
                                     <div class="d-flex flex-row justify-content-between w-100">
-                                        <p class="m-0" id="cart-meals-count"></p>
-                                        <p id="cart-meals-price" class="m-0"></p>
+                                        <p class="m-0 cart-meals-count"></p>
+                                        <p class="cart-meals-price m-0"></p>
                                     </div>
                                     <div class="d-flex flex-row justify-content-between w-100">
                                         <p class="m-0">Subtotal</p>
-                                        <p id="cart-sub-total" class="m-0 fw-bold"></p>
+                                        <p class="cart-sub-total m-0 fw-bold"></p>
                                     </div>
                                     <p id="tax-msg" class="text-center">Tax and shipping calculated at checkout</p>
                                 </div>
@@ -101,15 +101,15 @@
                         <div class="d-flex flex-column gap-3 border-top pt-3 text-center">
                             <div class="d-flex justify-content-between w-100 px-2">
                                 <div class="sub-total">Subtotal <span class="text-highlight fw-bold">$<span
-                                            id="sub-total"></span></span></div>
+                                            class="sub-total-text"></span></span></div>
                                 <div
                                     class="d-flex justify-content-center align-items-center gap-1 border rounded-pill px-3 py-1">
                                     <img src="assets/images/cart-icon.svg" width="17" height="17" alt="cart-icon">
-                                    <span id="cart-count" class="text-highlight fw-bold">0</span>
+                                    <span class="cart-count text-highlight fw-bold">0</span>
                                 </div>
                             </div>
-                            <button id="cart-next-btn" class="text-white w-100 py-2">Next</button>
-                            <p id="meal-left" class="text-highlight"></p>
+                            <button class="cart-next-btn text-white w-100 py-2"><a href="checkout.html" class="text-white text-decoration-none">Next</a></button>
+                            <p class="meal-left text-highlight"></p>
                         </div>
                     </div>
                 </div>
