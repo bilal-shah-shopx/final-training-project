@@ -921,7 +921,7 @@ $(document).ready(function () {
 
     function validateName(name) {
         if (name) {
-            if (isInvalidName(name)) {
+            if (isInvalidFullName(name)) {
                 isValidated = false;
 
                 $('#name-error').removeClass('d-none');
@@ -1062,6 +1062,10 @@ $(document).ready(function () {
         return !(/^[A-Za-z]+$/.test(name));
     }
 
+    function isInvalidFullName(name) {
+        return !(/^[A-Za-z ]+$/.test(name));
+    }
+
     function hasAllDigits(number) {
         return /^\d+$/.test(number);
     }
@@ -1179,6 +1183,44 @@ $(document).ready(function () {
     }
     renderCheckout();
 
+    function confirmOrder() {
+        const { day, month, date } = daysDetail['day-1'];
+        const price = calculateTotal();
+        const mealPrice = price.toFixed(2);
+        const tax = 10.99;
+        const shipping = 8.99;
+        let discount = 0;
+        const promoCode = STATE.promoCode;
+        if (promoCode) {
+            discount = calculateDiscount(STATE.promoCode).toFixed(2);
+        }
+        const totalPrice = (price + tax + shipping - discount).toFixed(2);
+
+        alert(`
+        Order placed successfully!
+
+        ---------Delivery Address---------
+        First Name: ${$('#fname').val()}
+        Last Name: ${$('#lname').val()}
+        Full Name: ${$('#name').val()}
+        Address : ${$('#line1').val()}
+        City: ${$('#city').val()}
+        State: ${$('#state').val()}
+        Zip: ${$('#zip').val()}
+        Phone: ${$('#phone').val()}
+        Email: ${$('#email').val()}
+        
+        ----------Order Summary----------
+        Delivery Date: ${day}, ${month} ${date}
+        Meals Price: $${mealPrice}
+        Shipping Price: $${shipping}
+        Tax Price: $${tax} ${(discount==0? '': `
+        Discount Applied: ${promoCode}%
+        Discount: -$${discount}`)}
+        Total Price: $${totalPrice}
+        `);
+    }
+
     $("#checkout-btn").on("click", function () {
         isValidated = (validatefName($('#fname').val()) &&
             validatelName($('#lname').val()) &&
@@ -1190,7 +1232,7 @@ $(document).ready(function () {
             validatePhone($('#phone').val()) &&
             validateEmail($('#email').val()));
         if (isValidated) {
-            alert('Order placed successfully!');
+            confirmOrder();
             resetState();
             location.reload();
         }
