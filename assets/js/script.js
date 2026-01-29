@@ -167,10 +167,10 @@ $(document).ready(function () {
     $('#next-btn').on('click', () => wizard.steps('next'));
 
     /* Accordion Section */
-    $(`#accordion`).html(
+    $(`.accordion`).html(
         `
         <hr>
-        <h1 class="text-center pt-5 pb-2">Common Questions</h1>
+        <h1 id="accordion-heading" class="text-center pt-5 pb-2">Common Questions</h1>
         <div class="row mx-auto d-flex flex-column justify-content-center align-items-center">
             <div class="col-12 col-md-10">
                 <div class="accordion" id="common-questions">
@@ -859,24 +859,35 @@ $(document).ready(function () {
 
     /* Checkout Section */
     let isValidated = false;
-    $("#fname").on("input", function () { validatefName($('#fname').val()); });
-    $("#lname").on("input", function () { validatelName($('#lname').val()); });
-    $("#name").on("input", function () { validateName($('#name').val()); });
-    $("#line1").on("input", function () { validateLine1($('#line1').val()); });
-    $("#city").on("input", function () { validateCity($('#city').val()); });
-    $("#state").on("input", function () { validateState($('#state').val()); });
-    $("#zip").on("input", function () { validateZip($('#zip').val()); });
-    $("#phone").on("input", function () { validatePhone($('#phone').val()); });
-    $("#email").on("input", function () { validateEmail($('#email').val()); });
+    $("#fname").on("input", function () { validatefName($('#fname').val()); toggleDisable() });
+    $("#lname").on("input", function () { validatelName($('#lname').val()); toggleDisable() });
+    $("#name").on("input", function () { validateName($('#name').val()); toggleDisable() });
+    $("#line1").on("input", function () { validateLine1($('#line1').val()); toggleDisable() });
+    $("#city").on("input", function () { validateCity($('#city').val()); toggleDisable() });
+    $("#state").on("input", function () { validateState($('#state').val()); toggleDisable() });
+    $("#zip").on("input", function () { validateZip($('#zip').val()); toggleDisable() });
+    $("#change-zip").on("click", function () { $('#zip').focus() });
+    $("#phone").on("input", function () { validatePhone($('#phone').val()); toggleDisable() });
+    $("#email").on("input", function () { validateEmail($('#email').val()); toggleDisable() });
+
+    $("#checkout-btn").addClass('disabled');
 
     function toggleDisable() {
+        isValidated = (validatefName($('#fname').val()) &&
+            validatelName($('#lname').val()) &&
+            validateName($('#name').val()) &&
+            validateLine1($('#line1').val()) &&
+            validateCity($('#city').val()) &&
+            validateState($('#state').val()) &&
+            validateZip($('#zip').val()) &&
+            validatePhone($('#phone').val()) &&
+            validateEmail($('#email').val()));
         if (isValidated) {
             $("#checkout-btn").removeClass('disabled');
         }
         else {
             $("#checkout-btn").addClass('disabled');
         }
-        return isValidated;
     }
 
     function validatefName(name) {
@@ -896,7 +907,7 @@ $(document).ready(function () {
             $('#fname-req').removeClass('d-none');
             $('#fname-error').addClass('d-none');
         }
-        return toggleDisable();
+        return isValidated;
     }
 
     function validatelName(name) {
@@ -916,7 +927,7 @@ $(document).ready(function () {
             $('#lname-req').removeClass('d-none');
             $('#lname-error').addClass('d-none');
         }
-        return toggleDisable();
+        return isValidated;
     }
 
     function validateName(name) {
@@ -938,7 +949,7 @@ $(document).ready(function () {
             $('#name-req').removeClass('d-none');
             $('#name-error').addClass('d-none');
         }
-        return toggleDisable();
+        return isValidated;
     }
 
     function validateLine1(line) {
@@ -950,7 +961,7 @@ $(document).ready(function () {
             isValidated = false;
             $('#line1-req').removeClass('d-none');
         }
-        return toggleDisable();
+        return isValidated;
     }
 
     function validateCity(city) {
@@ -972,7 +983,7 @@ $(document).ready(function () {
             $('#city-req').removeClass('d-none');
             $('#city-error').addClass('d-none');
         }
-        return toggleDisable();
+        return isValidated;
     }
 
     function validateState(state) {
@@ -993,7 +1004,7 @@ $(document).ready(function () {
             $('#state-req').removeClass('d-none');
             $('#state-error').addClass('d-none');
         }
-        return toggleDisable();
+        return isValidated;
     }
 
     function validateZip(zip) {
@@ -1014,7 +1025,7 @@ $(document).ready(function () {
             $('#zip-error').addClass('d-none');
             $('#zip-req').removeClass('d-none');
         }
-        return toggleDisable();
+        return isValidated;
     }
 
     function validatePhone(phone) {
@@ -1035,7 +1046,7 @@ $(document).ready(function () {
             $('#phone-error').addClass('d-none');
             $('#phone-req').removeClass('d-none');
         }
-        return toggleDisable();
+        return isValidated;
     }
 
     function validateEmail(email) {
@@ -1055,7 +1066,7 @@ $(document).ready(function () {
             $('#email-error').addClass('d-none');
             $('#email-req').removeClass('d-none');
         }
-        return toggleDisable();
+        return isValidated;
     }
 
     function isInvalidName(name) {
@@ -1173,7 +1184,7 @@ $(document).ready(function () {
                     </div>
                     <div class="d-flex flex-column">
                         <p class="my-auto ms-2"><strong class="title">${name}</strong></p>
-                        <p class="desc my-auto ms-2 text-secondary">${desc}</p>
+                        <p class="desc my-auto ms-2">${desc}</p>
                     </div>
                 </div>
             </div>
@@ -1214,7 +1225,7 @@ $(document).ready(function () {
         Delivery Date: ${day}, ${month} ${date}
         Meals Price: $${mealPrice}
         Shipping Price: $${shipping}
-        Tax Price: $${tax} ${(discount==0? '': `
+        Tax Price: $${tax} ${(discount == 0 ? '' : `
         Discount Applied: ${promoCode}%
         Discount: -$${discount}`)}
         Total Price: $${totalPrice}
@@ -1222,22 +1233,8 @@ $(document).ready(function () {
     }
 
     $("#checkout-btn").on("click", function () {
-        isValidated = (validatefName($('#fname').val()) &&
-            validatelName($('#lname').val()) &&
-            validateName($('#name').val()) &&
-            validateLine1($('#line1').val()) &&
-            validateCity($('#city').val()) &&
-            validateState($('#state').val()) &&
-            validateZip($('#zip').val()) &&
-            validatePhone($('#phone').val()) &&
-            validateEmail($('#email').val()));
-        if (isValidated) {
-            confirmOrder();
-            resetState();
-            location.reload();
-        }
-        else {
-            $("#checkout-btn").addClass('disabled');
-        }
+        confirmOrder();
+        resetState();
+        location.reload();
     });
 });
