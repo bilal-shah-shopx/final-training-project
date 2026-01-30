@@ -13,7 +13,33 @@
 <body>
     <div id="wizard">
 
-        <!--Plans Section-->
+        
+
+         <!--Day Section-->
+        <h3 class="steps-heading">Day</h3>
+        <section class="day-section">
+            <div class="container-fluid pb-4">
+                <div class="row">
+                    <div class="col-12 mx-auto d-flex justify-content-center align-items-center my-4">
+                        <h2 class="heading mt-2 text-center">Choose your delivery day</h2>
+                    </div>
+                    <div
+                        class="col-11 col-md-6 col-lg-5 col-xl-4 px-lg-5 mx-auto d-flex flex-column justify-content-center">
+                        <div class="table-container w-100 mb-3 d-flex">
+                            <div id="day" class="bg-white w-100"></div>
+                            <div class="scroll"></div>
+                        </div>
+                        <button id="next-btn" class="btn text-white">Next</button>
+                        <p class="footer-text mt-4 p-0 m-0 text-center">First Delivery Date: <strong
+                                id="delivery-date"></strong></p>
+                    </div>
+                </div>
+                <!--Accordion-->
+                <div class="container py-5 mb-5 accordion"></div>
+            </div>
+        </section>
+
+<!--Plans Section-->
         <h3 class="steps-heading">Plans</h3>
         <section class="plans-section">
             <div class="container-fluid pb-5 pt-2">
@@ -41,31 +67,7 @@
                 </div>
         </section>
 
-         <!--Day Section-->
-        <h3 class="steps-heading">Day</h3>
-        <section class="day-section">
-            <div class="container-fluid pb-4">
-                <div class="row">
-                    <div class="col-12 mx-auto d-flex justify-content-center align-items-center my-4">
-                        <h2 class="heading mt-2 text-center">Choose your delivery day</h2>
-                    </div>
-                    <div
-                        class="col-11 col-md-6 col-lg-5 col-xl-4 px-lg-5 mx-auto d-flex flex-column justify-content-center">
-                        <div class="table-container w-100 mb-3 d-flex">
-                            <table id="day" class="table table-bordered bg-white"></table>
-                            <div class="scroll"></div>
-                        </div>
-                        <button id="next-btn" class="btn text-white">Next</button>
-                        <p class="footer-text mt-4 p-0 m-0 text-center">First Delivery Date: <strong
-                                id="delivery-date"></strong></p>
-                    </div>
-                </div>
-                <!--Accordion-->
-                <div class="container py-5 mb-5 accordion"></div>
-            </div>
-        </section>
-
-          <!--Meals Section-->
+        <!--Meals Section-->
         <h3 class="steps-heading">Meals</h3>
         <section class="meals-section">
             <div class="container-fluid">
@@ -107,11 +109,14 @@
                                 <div class="d-flex flex-column border-top pt-3 text-center">
                                     <div class="d-flex flex-column gap-3">
                                         <div class="d-flex justify-content-between align-items-center  w-100 px-2">
-                                            <div class="sub-total fs-5">Subtotal <span class="text-highlight fw-bold">$<span
+                                            <div class="sub-total fs-5">Subtotal <span
+                                                    class="text-highlight fw-bold">$<span
                                                         class="sub-total-text"></span></span>
                                             </div>
-                                            <div id="cart-up" class="d-flex justify-content-center align-items-center gap-2 border rounded-pill px-4 py-2">
-                                                <img src="assets/images/cart-icon.svg" width="20" height="20" alt="cart-icon">
+                                            <div id="cart-up"
+                                                class="d-flex justify-content-center align-items-center gap-2 border rounded-pill px-4 py-2">
+                                                <img src="assets/images/cart-icon.svg" width="20" height="20"
+                                                    alt="cart-icon">
                                                 <span class="cart-count text-highlight fw-bold fs-5">0</span>
                                             </div>
                                         </div>

@@ -248,22 +248,23 @@ body {
     width: 100%;
     max-width: 8px;
     background-color: var(--scroll-bg-color);
+    z-index: 1;
+}
+
+.day-section .day {
+    border: 1px solid var(--dark-color);
+    border-right: none;
 }
 
 .day-section .selected-day {
     border-left: 8px solid var(--highlight-color);
 }
 
-tr {
-    border: 1px solid var(--dark-color);
-    border-right: none;
+.day-section .day-text {
+    padding: 13px 0;
 }
 
-.day-section td {
-    padding: 12px 0;
-}
-
-.day-section tr:hover {
+.day-section .day:hover {
     transform: translateX(5px);
 }
 

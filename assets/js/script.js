@@ -133,17 +133,19 @@ $(document).ready(function () {
             today.setDate(today.getDate() + 1);
             const { day, month, date } = daysDetail[dayId];
             content += `
-            <tr class="day" id="${dayId}">
-                <td class="ps-4 ${i > 1 ? 'date' : ''}">
-                ${i === 1 ? `
-                <div class="d-flex justify-content-between align-items-center popular py-1">
-                        <span class="date"><strong>${day}</strong>, ${month} ${date}</span>
-                        <span class="pe-1 popular-text">Most Popular</span>
+                <div class="day" id="${dayId}">
+                    ${i===1? `
+                    <div class="day-text ps-3 d-flex justify-content-between align-items-center popular">
+                        <span class="date"><strong class="pe-0 me-0">${day}</strong>, ${month} ${date}</span>
+                        <span class="pe-3 popular-text">Most Popular</span>
                     </div>
-                `: `<strong>${day}</strong>, ${month} ${date}`}
-                </td>
-            </tr>
-        `
+                    `:
+                    `
+                    <div class="day-text ps-3 date">
+                        <strong class="pe-0 me-0">${day}</strong>, ${month} ${date}`}
+                    </div>
+                </div>
+            `
         }
         $('#day').html(content);
     }
@@ -1195,7 +1197,7 @@ $(document).ready(function () {
     renderCheckout();
 
     function confirmOrder() {
-        const { day, month, date } = daysDetail['day-1'];
+        const { day, month, date } = daysDetail[STATE.dayId];
         const price = calculateTotal();
         const mealPrice = price.toFixed(2);
         const tax = 10.99;
