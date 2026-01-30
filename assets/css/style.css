@@ -242,6 +242,7 @@ body {
     max-height: 330px;
     overflow-x: hidden;
     overflow-y: scroll;
+    background-color: var(--light-color);
 }
 
 .day-section .scroll {

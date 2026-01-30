@@ -135,7 +135,7 @@ $(document).ready(function () {
             content += `
                 <div class="day" id="${dayId}">
                     ${i===1? `
-                    <div class="day-text ps-3 d-flex justify-content-between align-items-center popular">
+                    <div class="day-text ps-3 d-flex justify-content-between align-items-center popular py-2">
                         <span class="date"><strong class="pe-0 me-0">${day}</strong>, ${month} ${date}</span>
                         <span class="pe-3 popular-text">Most Popular</span>
                     </div>
